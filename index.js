@@ -238,14 +238,5 @@ function addTeam() {
 	);
 }
 
-// const addTeam = genHTML(team)
-//     fs.writeFileSync('./dist/index.html', team, (err) => {
-//         if(err) {
-//             console.log(err)
-//         } else {
-//             console.log('profile created')
-//         }
-//     })
-
 
 addManager()
