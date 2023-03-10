@@ -201,11 +201,11 @@ function addTeam() {
                     <strong>Office Number: </strong>${team[i].officeNumber}
                   </li>`;
           }
-          if (team[i].gitHub) {
+          if (team[i].github) {
             card += `
                   <li class="list-group-item">
                     <strong>GitHub:</strong>
-                    <a href="https://github.com/${team[i].gitHub}">${team[i].gitHub}</a>
+                    <a href="https://github.com/${team[i].github}">${team[i].github}</a>
                   </li>`;
           }
           if (team[i].school) {
