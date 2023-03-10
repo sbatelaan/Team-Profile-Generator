@@ -5,7 +5,6 @@ const Engineer = require('./library/Engineer')
 const Intern = require('./library/Intern')
 const path = require('path')
 const team = ['']
-const genHTML = require('./src/generateHTML')
 
 const addManager = () => {
     inquirer.prompt([
@@ -136,7 +135,7 @@ const addIntern = () => {
         }
     ])
     .then((data) => {
-        const newIntern = new Intern(data.name, data.id, data.email, data.github)
+        const newIntern = new Intern(data.name, data.id, data.email, data.school)
         team.push(newIntern)
         if (data.newEmployee) {
             addEmployee()
@@ -179,45 +178,49 @@ function addTeam() {
 
 	htmlPageContent.push(htmlPageHead);
 
-	for (let i = 0; i < team.length; i++) {
-		let card = `
-					<div class="card" style="width: 19rem">
-						<div class="card-body">
-							<h3 class="card-title">${team[i].name}</h3>
-							<h5 class="card-subtitle">${team[i].role}</h5>
-							<ul class="list-group list-group-flush">
-								<li class="list-group-item">
-									<strong>ID:</strong> ${team[i].id}
-								</li>
-								<li class="list-group-item">
-									<strong>Email:</strong>
-								<a href="mailto:${team[i].email}"
-									>${team[i].email}</a
-									>
-								</li>`;
-			if (team[i].officeNumber) {
-				card += `
-								<li class="list-group-item">
-									<strong>Office Number: </strong>${team[i].officeNumber}
-								</li>`;
-			}if (team[i].gitHub) {
-				card += `
-								<li class="list-group-item">
-									<strong>GitHub:</strong> <a href="https://github.com/${team[i].gitHub}">${team[i].gitHub}</a>
-								</li>`;
-			}if (team[i].school) {
-			card += `
-								<li class="list-group-item">
-									<strong>School:</strong> ${team[i].school}
-								</li>`;
-			}
-			card += `
-							</ul>			
-						</div>
-					</div>`;
-
-		htmlPageContent.push(card);
-	}
+    if (team.length === 0) {
+        htmlPageContent.push('<h2>No team members to display</h2>');
+      } else {
+        for (let i = 1; i < team.length; i++) {
+          let card = `
+            <div class="card">
+              <div class="card-body">
+                <h3 class="card-title">${team[i].name}</h3>
+                <h5 class="card-subtitle">${team[i].role}</h5>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <strong>ID:</strong> ${team[i].id}
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Email:</strong>
+                    <a href="mailto:${team[i].email}">${team[i].email}</a>
+                  </li>`;
+          if (team[i].officeNumber) {
+            card += `
+                  <li class="list-group-item">
+                    <strong>Office Number: </strong>${team[i].officeNumber}
+                  </li>`;
+          }
+          if (team[i].gitHub) {
+            card += `
+                  <li class="list-group-item">
+                    <strong>GitHub:</strong>
+                    <a href="https://github.com/${team[i].gitHub}">${team[i].gitHub}</a>
+                  </li>`;
+          }
+          if (team[i].school) {
+            card += `
+                  <li class="list-group-item">
+                    <strong>School:</strong> ${team[i].school}
+                  </li>`;
+          }
+          card += `
+                </ul>      
+              </div>
+            </div>`;
+          htmlPageContent.push(card);
+        }
+      }
 
 	
 	const htmlFoot = `
