@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    
+}
+
+html {
+    line-height: 1.15;
+   
+    -webkit-text-size-adjust: 100%;
+    
+  }
+
+body {
+    margin: 0;
+}
+
+.min-100-vh {
+    min-height: 100vh;
+  }
+
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    background-color: gray;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+  }
