@@ -46,6 +46,8 @@ WHEN I decide to finish building my team
 
 THEN I exit the application, and the HTML is generated
 
+Video walkthough https://drive.google.com/file/d/1brBwq1oXu6cd4LJKqsaL4N9M8W7CBa1p/view
+
 
 ![Screenshot (20)](https://user-images.githubusercontent.com/119352363/224250332-b0fa2a15-7510-4ce0-b9d9-54277bdbf715.png)
 
